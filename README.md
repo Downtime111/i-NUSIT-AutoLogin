@@ -1,7 +1,9 @@
 # i-NUSIT-AutoLogin
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/Downtime111/i-NUSIT-AutoLogin.svg)](https://github.com/Downtime111/i-NUSIT-AutoLogin)  [![Github All Releases](https://img.shields.io/github/downloads/Downtime111/i-NUSIT-AutoLogin/total.svg)](http://github.com/Downtime111/i-NUSIT-AutoLogin/releases)  [![GitHub release](https://img.shields.io/github/release/Downtime111/i-NUSIT-AutoLogin.svg)](http://github.com/Downtime111/i-NUSIT-AutoLogin/releases)  [![GitHub issues](https://img.shields.io/github/issues/Downtime111/i-NUSIT-AutoLogin.svg)](https://github.com/Downtime111/i-NUSIT-AutoLogin/issues)
 
-**i-NUSIT-AutoLogin是南信大i-NUSIT校园网自动认证登录工具。**
+**i-NUSIT-AutoLogin是南信大i-NUIST校园网自动认证登录工具。**
+
+再提醒一遍，名称没有写错，“i-NUSIT”只是恶搞而已..
 
 主要运行在CMD下，已打包成EXE自解压文件
 
