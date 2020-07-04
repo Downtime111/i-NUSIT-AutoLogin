@@ -74,6 +74,7 @@ https://github.com/Downtime111/i-NUSIT-AutoLogin/raw/master/pic/Image%20%5B3%5D.
 ### 删除登录信息
 ![image](
 https://github.com/Downtime111/i-NUSIT-AutoLogin/raw/master/pic/Image%20%5B4%5D.png)
+
 在如图所示界面输入‘d’，即可删除本地保存的登录信息（用户名，密码，运营商）。
 
 保存的密码存放在 D:\NUSIT_autologin\login_cache.txt ，密码默认以Base64编码方式加密。
@@ -82,6 +83,7 @@ https://github.com/Downtime111/i-NUSIT-AutoLogin/raw/master/pic/Image%20%5B4%5D.
 在上一个图的界面输入‘l’，即可注销网络登录状态。
 ![image](
 https://github.com/Downtime111/i-NUSIT-AutoLogin/raw/master/pic/Image%20%5B5%5D.png)
+
 回车再次登录。
 ### 退出程序
 在上一个图的界面输入‘q’，即可退出登录程序。
