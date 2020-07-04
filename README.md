@@ -14,7 +14,7 @@
     [**点击进入下载地址**](https://github.com/Downtime111/i-NUSIT-AutoLogin/releases)
 
 * **Linux版本：**
-    正在开发
+    没有
 
 现已支持自动设置开机自启，自动连接校园网WLAN，可实现无需人工操作开机自动联网。
 
@@ -106,4 +106,4 @@ https://github.com/Downtime111/i-NUSIT-AutoLogin/raw/master/pic/Image%20%5B5%5D.
 * 实现后台运行
 
 ### 0x02 LICNESE
-i-NUSIT-AutoLogin的代码使用MIT License发布，此外，禁止使用i-NUSIT-AutoLogin以及i-NUSIT-AutoLogin的修改程序用于商业目的（比如交叉编译到路由进行销售等行为）。
+i-NUSIT-AutoLogin的代码使用MIT License发布，此外，禁止使用i-NUSIT-AutoLogin以及i-NUSIT-AutoLogin的修改程序用于商业目的。
