@@ -14,6 +14,7 @@
     [**点击进入下载地址**](https://github.com/Downtime111/i-NUSIT-AutoLogin/releases)
 
 * **Linux版本：**
+
     没有
 
 现已支持自动设置开机自启，自动连接校园网WLAN，可实现无需人工操作开机自动联网。
