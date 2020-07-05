@@ -18,6 +18,7 @@
     没有
 
 现已支持自动设置开机自启，自动连接校园网WLAN，可实现无需人工操作开机自动联网。
+最新版已支持后台运行，实时监听网络连接状态，当网络连接异常时，自动在后台运行主程序，实现全天候自动的无感联网体验。
 
 ## 0x01 版本说明
 ## v1.0
@@ -44,6 +45,12 @@ https://github.com/Downtime111/i-NUSIT-AutoLogin/raw/master/pic/Image%20%5B2%5D.
 * 修改了read_message( )与save_message( )读取的路径，解决了开机自启时读取login_cache.txt文件失败的问题
 * 修改了test_internet( )的timeout时延数，解决了因网络波动导致的检测连通性失败的问题
 * 修改了自解压的更新与覆写模式，保留了用户的登录信息
+
+## v3.0
+
+* 实现了后台驻留
+* 实现了实时监听网络状态
+* 实现了后台静默运行并释放
 
 ## 0x02 安装
 安装时请不要修改安装路径，否则会导致程序出错
@@ -76,6 +83,14 @@ i-NUSIT1.0 键值为空or不存在的时候，都会触发修改注册表。
 如需还原注册表，请下载如下文件运行即可：
 [注册表还原.reg](https://github.com/Downtime111/i-NUSIT-AutoLogin/blob/master/注册表恢复.reg)
 
+### 后台运行的实现
+程序的后台运行使用了VBS脚本语言，当联网成功后，调用VBS语句开启后台进程。
+```
+set ws = WScript.CreateObject("WScript.Shell")
+ws.Run "D:\NUSIT_autologin\i-NUSIT_subprocess.exe /c *" ,0
+```
+后台进程调用主进程后台执行同理。
+
 ### 登录
 输入用户名回车，输入密码回车，输入序号选择运营商回车即可自动连接。
 ![image](
@@ -88,6 +103,8 @@ https://github.com/Downtime111/i-NUSIT-AutoLogin/raw/master/pic/Image%20%5B4%5D.
 
 在如图所示界面输入‘d’，即可删除本地保存的登录信息（用户名，密码，运营商）。
 
+在最新的v3.0中执行删除信息，可同时将后台进程关闭。
+
 保存的密码存放在 D:\NUSIT_autologin\login_cache.txt ，密码默认以Base64编码方式加密。
 
 ### 注销
@@ -96,8 +113,11 @@ https://github.com/Downtime111/i-NUSIT-AutoLogin/raw/master/pic/Image%20%5B4%5D.
 https://github.com/Downtime111/i-NUSIT-AutoLogin/raw/master/pic/Image%20%5B5%5D.png)
 
 回车再次登录。
+在最新的v3.0中执行注销认证，可同时将后台进程关闭。
+
 ### 退出程序
 在上一个图的界面输入‘q’，即可退出登录程序。
+在最新的v3.0中执行退出程序，仅关闭主进程，后台进程继续。
 
 ## 0x04 其他
 ### 0x01 TODO
@@ -108,9 +128,9 @@ https://github.com/Downtime111/i-NUSIT-AutoLogin/raw/master/pic/Image%20%5B5%5D.
 * **~~实现开机自启~~**
 * 实现自动打开网络开关
 * 编写GUI图形界面
-* 实现休眠后登陆时自动联网
+* **~~实现休眠后登陆时自动联网~~**
 * 支持关闭修改注册表功能（目前默认开启不支持关闭）
-* 实现后台运行
+* **~~实现后台运行~~**
 
 ### 0x02 LICNESE
 i-NUSIT-AutoLogin的代码使用MIT License发布，此外，禁止使用i-NUSIT-AutoLogin以及i-NUSIT-AutoLogin的修改程序用于商业目的。
