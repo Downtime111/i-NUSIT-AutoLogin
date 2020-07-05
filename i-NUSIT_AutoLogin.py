@@ -6,10 +6,56 @@ import requests
 import base64
 import time
 import winreg
-#import psutil
+import psutil
+import subprocess
 #import csv
 #import struct
 
+def kill_sub_process():
+    state=0
+    for proc in psutil.process_iter():
+        try:
+            pinfo = proc.as_dict(attrs=['name'])
+        except psutil.NoSuchProcess:
+            pass
+        else:
+            #print(pinfo)
+            if pinfo.get('name')=='i-NUSIT_subprocess.exe':
+                state=1
+            else:
+                pass
+    #print(state)
+    if state == 1:
+        os.system('TASKKILL /F /IM i-NUSIT_subprocess.exe')
+        #print('kill')
+    else:
+        pass
+    return state
+
+def call_sub():
+    subprocess.call('cscript D:\\NUSIT_autologin\\hidden_runsub.vbs')
+    #print('vbs script has run.')
+
+def find_sub_process():
+    state = 0
+    for proc in psutil.process_iter():
+        try:
+            pinfo = proc.as_dict(attrs=['name'])
+        except psutil.NoSuchProcess:
+            pass
+        else:
+            #print(pinfo)
+            if pinfo.get('name')=='i-NUSIT_subprocess.exe':
+                pass
+            else:
+                state = 1
+    #print(state)
+    if state == 1:
+        call_sub()
+        #print('run')
+    else:
+        pass
+    return state
 
 def edit_regedit():
     global autorun_value_flag,autorun_value
@@ -90,18 +136,19 @@ def get_status():
 
 def test_internet():
     html="https://www.baidu.com"
-    page_status = requests.get(html,timeout=1)
+    page_status = requests.get(html,timeout=10)
     response = page_status.status_code
     #print("外部网络状态码：",response)
     return response
 
 def save_message(username, password, domain):
-    with open('D:/login_cache.txt','w+',encoding='utf-8') as message:
+    with open('D:\\NUSIT_autologin\\login_cache.txt','w+',encoding='utf-8') as message:
         dict = {'username': username, 'password': password, 'domain': domain}
         message.write(str(dict))
+
 def read_message():
     try:
-        with open('D:/login_cache.txt', 'r', encoding='utf-8') as message:
+        with open('D:\\NUSIT_autologin\\login_cache.txt', 'r', encoding='utf-8') as message:
             dict = eval(message.read())
             #print(dict)
             username = dict['username']
@@ -140,7 +187,7 @@ def read_message():
         return file_state,username,password,domain
 
 def delete_message():
-    with open('D:/login_cache.txt', 'w+', encoding='utf-8') as message:
+    with open('D:\\NUSIT_autologin\\login_cache.txt', 'w+', encoding='utf-8') as message:
         dict=[]
         message.write(str(dict))
 
@@ -298,6 +345,7 @@ def main():
                         print('正在验证网络连通性，请稍后...')
                         time.sleep(1)
                         if test_internet() == 200:
+                            call_sub()#调用监听程序
                             print(' ')
                             print('Successfully connected to the Internet.')
                             print(' ')
@@ -307,6 +355,7 @@ def main():
                             if q == 'l' :
                                 logout(username, password, domain)
                                 print(' ')
+                                kill_sub_process()
                                 print('  ========== 校园网注销成功 =========')
                                 print(' ')
                                 q8 = str(input('回车重新登录，q键退出程序：')).lower()
@@ -320,7 +369,10 @@ def main():
                             elif q == 'd':
                                 delete_message()
                                 logout(username, password, domain)
+                                print(' ')
+                                kill_sub_process()
                                 print('本地保存的登录信息已删除')
+                                print(' ')
                             elif q == 'q':
                                 print('程序已退出')
                                 flag = True
@@ -362,6 +414,7 @@ def main():
                             q2 = str(input('按q键退出登录程序，按l键注销登录，按d键删除保存的登录信息：')).lower()
                             if q2 == 'l':
                                 print(' ')
+                                kill_sub_process()
                                 print('['+logout(username,password,domain)+']')
                                 print(' ')
                                 print('---------------------------------')
@@ -375,7 +428,10 @@ def main():
                                 break
                             elif q2 == 'd':
                                 delete_message()
+                                print(' ')
+                                kill_sub_process()
                                 print('本地保存的登录信息已删除')
+                                print(' ')
                                 logout(username, password, domain)
                             elif q2 == 'q':
                                 print('程序已退出')
@@ -393,6 +449,7 @@ def main():
                                 break
                             else:
                                 delete_message()
+                                kill_sub_process()
                         elif info == 'UserName_Err':
                             print('---------------------------------')
                             q4 = str(input('回车重新登录，q键退出程序：')).lower()
@@ -401,6 +458,7 @@ def main():
                                 break
                             else:
                                 delete_message()
+                                kill_sub_process()
                         else:
                             print('[认证失败, 请检查密码及账户状态]')
                             print('---------------------------------')
@@ -410,6 +468,7 @@ def main():
                                 break
                             else:
                                 delete_message()
+                                kill_sub_process()
                     else:
                         print('校园网设备故障，请稍后重试。')
             else:
