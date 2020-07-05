@@ -39,6 +39,12 @@ https://github.com/Downtime111/i-NUSIT-AutoLogin/raw/master/pic/Image.png)
 ![image](
 https://github.com/Downtime111/i-NUSIT-AutoLogin/raw/master/pic/Image%20%5B2%5D.png)
 
+## v2.1
+
+* 修改了read_message( )与save_message( )读取的路径，解决了开机自启时读取login_cache.txt文件失败的问题
+* 修改了test_internet( )的timeout时延数，解决了因网络波动导致的检测连通性失败的问题
+* 修改了自解压的更新与覆写模式，保留了用户的登录信息
+
 ## 0x02 安装
 安装时请不要修改安装路径，否则会导致程序出错
 
